@@ -563,19 +563,91 @@ public class RestResponseEntityExceptionHandler
 				https://www.baeldung.com/rest-template
 				-->
 				<section>
-					<h2>Spring Web</h2>
-					<h3>Consumiendo HTTP Endpoints</h3>
-					<pre><code data-trim>
+					<section>
+						<h2>Spring Web</h2>
+						<h3>Consumiendo HTTP Endpoints (Request)</h3>
+						<pre><code data-trim>
 RestTemplate restTemplate = new RestTemplate();
-String fooResourceUrl = "http://localhost:8080/api/foos";
-ResponseEntity< String > response = restTemplate
-	.getForEntity(fooResourceUrl + "/1", String.class);
-					</code></pre>
-					<p>
+String fooResourceUrl
+  = "http://localhost:8080/spring-rest/foos";
+ResponseEntity<String> response
+  = restTemplate.getForEntity(fooResourceUrl + "/1", String.class);
+						</code></pre>
+					</section>
+					<section>
+						<h2>Spring Web</h2>
+						<h3>Consumiendo HTTP Endpoints (Response Plain JSON)</h3>
+						<pre><code data-trim>
+ObjectMapper mapper = new ObjectMapper();
+JsonNode root = mapper.readTree(response.getBody());
+JsonNode name = root.path("name");
+						</code></pre>
+					</section>
+					<section>
+						<h2>Spring Web</h2>
+						<h3>Consumiendo HTTP Endpoints (Response POJO)</h3>
+						<pre><code data-trim>
+public class Foo implements Serializable {
+    private long id;
+
+    private String name;
+    // standard getters and setters
+}
+
+Foo foo = restTemplate
+  .getForObject(fooResourceUrl + "/1", Foo.class);
+assertThat(foo.getName(), notNullValue());
+assertThat(foo.getId(), is(1L));
+
+						</code></pre>
+					</section>
+					<section>
+						<h2>Spring Web</h2>
+						<h3>Consumiendo HTTP Endpoints (Obtener Headers)</h3>
+						<pre><code data-trim>
+HttpHeaders httpHeaders = restTemplate.headForHeaders(fooResourceUrl);
+						</code></pre>
+					</section>
+					<section>
+						<h2>Spring Web</h2>
+						<h3>Consumiendo HTTP Endpoints (Create Resource - POST)</h3>
+						<pre><code data-trim>
+RestTemplate restTemplate = new RestTemplate();
+
+HttpEntity<Foo> request = new HttpEntity<>(new Foo("bar"));
+Foo foo = restTemplate.postForObject(fooResourceUrl, request, Foo.class);
+
+						</code></pre>
+					</section>
+					<section>
+						<h2>Spring Web</h2>
+						<h3>Consumiendo HTTP Endpoints (Update Resource - PUT)</h3>
+						<pre><code data-trim>
+Foo updatedInstance = new Foo("newName");
+updatedInstance.setId(createResponse.getBody().getId());
+String resourceUrl = 
+  fooResourceUrl + '/' + createResponse.getBody().getId();
+HttpEntity<Foo> requestUpdate = new HttpEntity<>(updatedInstance, headers);
+template.exchange(resourceUrl, HttpMethod.PUT, requestUpdate, Void.class);
+
+						</code></pre>
+					</section>
+					<section>
+						<h2>Spring Web</h2>
+						<h3>Consumiendo HTTP Endpoints (Delete Resource - DELETE)</h3>
+						<pre><code data-trim>
+String entityUrl = fooResourceUrl + "/" + existingResource.getId();
+restTemplate.delete(entityUrl);
+						</code></pre>
+					</section>
+					<section>
+						<h2>Referencias</h2>
+						<p>
 						https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-resttemplate
 						<br />
 						https://docs.spring.io/spring-framework/docs/current/javadoc-api/index.html?org/springframework/web/client/RestTemplate.html
 					</p>
+					</section>
 				</section>
 				<!--
 				https://spring.io/guides/gs/validating-form-input/

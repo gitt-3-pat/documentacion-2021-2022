@@ -72,7 +72,7 @@
 							Un documento tambien puede incluir:
 						</p>
 						<ul>
-							<li>Imégenes</li>
+							<li>Imágenes</li>
 							<li>Vídeo</li>
 							<li>Objetos hipermedia incluidos (PDF, otros...)</li>
 						</ul>
@@ -83,10 +83,8 @@
 					<section>
 						<h2>HTML</h2>
 						<p>
-							Hypertext Markup Language (HTML) is the standard markup language for documents
-							designed to be displayed in a web browser.
-							It can be assisted by technologies such as Cascading Style Sheets (CSS)
-							and scripting languages such as JavaScript.
+							Hypertext Markup Language (HTML) es el lenguaje estándar basado en etiquetas (markup) para navegadores Web.
+							Se complementa con tecnologias como Cascading Style Sheets (CSS) y lenguaje de scripting como Javascript.
 						</p>
 					</section>
 				</section>
@@ -111,8 +109,7 @@
 					<section>
 						<h2>Head</h2>
 						<p>
-							The HTML < head > element contains machine-readable information (metadata) about the document,
-							like its title, scripts, and style sheets.
+							La etiqueta HTML < head > contiene la información del servidor (metadata) sobre el documento, como "title", "scripts" y "styles".
 						</p>
 					</section>
 					<section>
@@ -140,12 +137,19 @@
 					<section>
 						<h2>Body</h2>
 						<p>
-							The HTML < body > Element represents the content of an HTML document.
-							There can be only one < body > element in a document.
+							La etiqueta HTML < body > representa el contenido del documento HTML.
+							Sólo puede existir una etiqueta < body > en un documento (page).
 						</p>
 					</section>
 					<section>
-						<img src="images/example.png" />
+						<h2>Body</h2>
+						<pre><code data-trim>
+							<body>
+							  <h1>This is a heading</h1>
+							  <p>This is a paragraph.</p>
+							</body>
+						</code>
+					</pre>
 					</section>
 				</section>
 				<section>
@@ -242,7 +246,28 @@ finibus ultrices quam lectus ut elit. Donec molestie euismod nulla ut fermentum.
 						</ul>
 					</section>
 					<section>
-						<img src="images/example.png" />
+						<h3>Formularios</h3>
+						<pre><code data-trim>
+<form action="/signup" method="post">
+  <label for="fname">First name:</label>
+  <input type="text" id="fname" name="fname"/><br><br>
+  <label for="lname">Last name:</label>
+  <input type="text" id="lname" name="lname"/><br><br>
+  <label for="tidentification">Type identification:</label>
+  <select name="select">
+    <option value="value1">NIF</option>
+    <option value="value2" selected>DNI</option>
+    <option value="value3">NIE</option>
+  </select><br><br>
+   <label for="identification">Identification:</label>
+  <input type="text" id="identification" name="identification"/><br><br>
+  <button type="submit">Submit</button>
+</form>
+						</code></pre>
+					</section>
+					<section>
+						<h2>Formularios</h2>
+						<img src="images/formulario1.png" width="130%"/>
 					</section>
 				</section>
 				<section>
