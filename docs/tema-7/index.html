@@ -954,6 +954,82 @@ public class ScheduledTasks {
 							<li>HTTP</li>
 						</ul>
 					</section>
+					<section>
+						<h2>Spring Security</h2>
+						<h3>Basic Authentication</h3>
+						<p>
+							En el contexto de una transacción HTTP, la autenticación de acceso básica es un método diseñado para permitir a un navegador web, u otro programa cliente, proveer credenciales en la forma de usuario y contraseña cuando se le solicita una página al servidor.
+						</p>
+					</section>
+					<section>
+						<h2>Spring Security</h2>
+						<h3>Basic Authentication (Configuración)</h3>
+						<pre><code data-trim>
+@Configuration
+@EnableWebSecurity
+public class CustomWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private MyBasicAuthenticationEntryPoint authenticationEntryPoint;
+
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication()
+          .withUser("user1").password(passwordEncoder().encode("user1Pass"))
+          .authorities("ROLE_USER");
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+          .antMatchers("/securityNone").permitAll()
+          .anyRequest().authenticated()
+          .and()
+          .httpBasic()
+          .authenticationEntryPoint(authenticationEntryPoint);
+
+        http.addFilterAfter(new CustomFilter(),
+          BasicAuthenticationFilter.class);
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Spring Security</h2>
+						<h3>Basic Authentication (Solicitud sin credenciales)</h3>
+						<pre><code data-trim>
+curl -i http://localhost:8080/spring-security-rest-basic-auth/api/foos/1
+
+HTTP/1.1 401 Unauthorized
+Server: Apache-Coyote/1.1
+Set-Cookie: JSESSIONID=E5A8D3C16B65A0A007CFAACAEEE6916B; Path=/spring-security-mvc-basic-auth/; HttpOnly
+WWW-Authenticate: Basic realm="Spring Security Application"
+Content-Type: text/html;charset=utf-8
+Content-Length: 1061
+Date: Wed, 29 May 2013 15:14:08 GMT
+						</code></pre>
+					</section>
+					<section>
+						<h2>Spring Security</h2>
+						<h3>Basic Authentication (Solicitud con credenciales)</h3>
+						<pre><code data-trim>
+curl -i --user user1:user1Pass http://localhost:8080/spring-security-rest-basic-auth/api/foos/1
+
+HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Set-Cookie: JSESSIONID=301225C7AE7C74B0892887389996785D; Path=/spring-security-mvc-basic-auth/; HttpOnly
+Content-Type: text/html;charset=ISO-8859-1
+Content-Language: en-US
+Content-Length: 90
+Date: Wed, 29 May 2013 15:19:38 GMT
+
+						</code></pre>
+					</section>
 					<!--
 					<section>
 						<h2>Spring Security</h2>
