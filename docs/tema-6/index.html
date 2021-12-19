@@ -34,7 +34,6 @@
 						<li>Jakarta Contexts and Dependency Injection</li>
 						<li>Bean Validation</li>
 						<li>Jakarta Servlet</li>
-						<li>Jakarta RESTful Web Services</li>
 						<li>Jakarta Persistence</li>
 						<li>Jakarta Messaging</li>
 						<li>Referencias</li>
@@ -107,18 +106,6 @@
 						<h2>Jakarta EE</h2>
 						<h3>Web service specifications</h3>
 						<ul>
-							<li><strong>Jakarta RESTful Web</strong> Services provides support in creating web services according to the Representational State Transfer (REST) architectural pattern;
-							</li>
-							<li><strong>Jakarta JSON Processing</strong> is a set of specifications to manage information encoded in JSON format;
-							</li>
-							<li><strong>Jakarta JSON Binding</strong> provides specifications to convert JSON information into or from Java classes;
-							</li>
-						</ul>
-					</section>
-					<section>
-						<h2>Jakarta EE</h2>
-						<h3>Web service specifications</h3>
-						<ul>
 							<li><strong>Jakarta XML Binding</strong> allows mapping XML into Java objects;
 							</li>
 							<li><strong>Jakarta XML Web Services</strong> can be used to create SOAP web services.</li>
@@ -130,17 +117,7 @@
 						<ul>
 							<li><strong>Jakarta Contexts and Dependency Injection (CDI)</strong> is a specification to provide a dependency injection container;
 							</li>
-							<li><strong>Jakarta Enterprise Beans (EJB)</strong> specification defines a set of lightweight APIs that an object container (the EJB container) will support in order to provide transactions (using JTA), remote procedure calls (using RMI or RMI-IIOP), concurrency control, dependency injection and access control for business objects.
-							</li>
-						</ul>
-					</section>
-					<section>
-						<h2>Jakarta EE</h2>
-						<h3>Enterprise specifications</h3>
-						<ul>
 							<li><strong>Jakarta Persistence (JPA)</strong> are specifications about object-relational mapping between relation database tables and Java classes.
-							</li>
-							<li><strong>Jakarta Transactions (JTA)</strong> contains the interfaces and annotations to interact with the transaction support offered by Jakarta EE.
 							</li>
 							<li><strong>Jakarta Messaging (JMS)</strong> provides a common way for Java programs to create, send, receive and read an enterprise messaging system's messages.
 							</li>
@@ -246,61 +223,6 @@ public class HelloWorld extends HttpServlet {
 				</section>
 				<section>
 					<section>
-						<h2>JAX-RS, Jakarta RESTful Web Services (JSR-370)</h2>
-						<p>
-							Jakarta RESTful Web Services, (JAX-RS; formerly Java API for RESTful Web Services)
-							is a Jakarta EE API specification that provides support in creating web services
-							according to the Representational State Transfer (REST) architectural pattern.
-						</p>
-					</section>
-					<section>
-						<h2>JAX-RS, Jakarta RESTful Web Services (JSR-370)</h2>
-						<p>
-							JAX-RS provides some annotations to aid in mapping a resource class (a POJO) as a web resource.
-						</p>
-						<ul>
-							<li>@Path specifies the relative path for a resource class or method.</li>
-							<li>@GET, @PUT, @POST, @DELETE and @HEAD specify the HTTP request type of a resource.</li>
-							<li>@Produces specifies the response MIME type.</li>
-							<li>@Consumes specifies the accepted request Internet media types.</li>
-						</ul>
-					</section>
-					<section>
-						<h2>JAX-RS, Jakarta RESTful Web Services (JSR-370)</h2>
-						<ul>
-							<li>@PathParam binds the method parameter to a path segment.</li>
-							<li>@QueryParam binds the method parameter to the value of an HTTP query parameter.</li>
-							<li>@HeaderParam binds the method parameter to an HTTP header value.</li>
-							<li>@CookieParam binds the method parameter to a cookie value.</li>
-							<li>@FormParam binds the method parameter to a form value.</li>
-							<li></li>
-						</ul>
-					</section>
-					<section>
-						<h2>JAX-RS, Jakarta RESTful Web Services (JSR-370)</h2>
-						<pre><code data-trim>
-@Path("/employees")
-public class EmployeeResource {
-
-    @Autowired
-    private EmployeeRepository employeeRepository;
-
-    @GET
-    @Path("/{id}")
-    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    public Employee getEmployee(@PathParam("id") int id) {
-        return employeeRepository.getEmployee(id);
-    }
-}
-						</code></pre>
-					</section>
-					<!--
-					¿Quien implementa Jersey?
-					-->
-				</section>
-
-				<section>
-					<section>
 						<h2>JPA, Jakarta Persistence</h2>
 						<p>
 							Jakarta Persistence (JPA; formerly Java Persistence API) is a Jakarta EE application programming interface specification that describes the management of relational data in enterprise Java applications.
@@ -341,7 +263,6 @@ public interface SimpleUserRepository extends CrudRepository< User, Long> {
 					<ul>
 						<li>https://en.wikipedia.org/wiki/Jakarta_EE</li>
 						<li>https://jakarta.ee/specifications/</li>
-						<li>https://jakarta.ee/specifications/restful-ws/3.0/jakarta-restful-ws-spec-3.0.html</li>
 						<li>https://eclipse-ee4j.github.io/jersey/</li>
 						<li>https://jakarta.ee/specifications/persistence/3.0/</li>
 						<li>https://hibernate.org/orm/</li>
