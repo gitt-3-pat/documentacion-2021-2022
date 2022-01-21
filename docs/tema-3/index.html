@@ -217,33 +217,10 @@ finibus ultrices quam lectus ut elit. Donec molestie euismod nulla ut fermentum.
 						</code></pre>
 					</section>
 					<section>
-						<h2>Contenido</h2>
 						<h3>Formularios</h3>
-						<pre><code data-trim>
- <form action="/login" method="post">
-	 <input type="text" name="user" />
-	 <input type="password" name="password" />
-	 <button type="submit">Login</button>
- </form>
-						</code></pre>
-					</section>
-					<section>
-						<h2>Contenido</h2>
-						<h3>Formularios</h3>
-						<ul>
-							<li>https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form</li>
-							<li>https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button</li>
-							<li>https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input</li>
-						</ul>
-					</section>
-					<section>
-						<h2>Contenido</h2>
-						<h3>Formularios</h3>
-						<ul>
-							<li>https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select</li>
-							<li>https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option</li>
-							<li>https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea</li>
-						</ul>
+						<p>
+							Los formularios web permiten interaccionar con el lado del servidor para enviar informacion.
+						</p>
 					</section>
 					<section>
 						<h3>Formularios</h3>
@@ -268,6 +245,31 @@ finibus ultrices quam lectus ut elit. Donec molestie euismod nulla ut fermentum.
 					<section>
 						<h2>Formularios</h2>
 						<img src="images/formulario1.png" width="130%"/>
+					</section>
+					<section>
+						<h2>Contenido</h2>
+						<h3>Elementos de formulario:</h3>
+						<ul>
+							<li>form</li>
+							<li>button</li>
+							<li>input</li>
+							<li>select</li>
+							<li>option</li>
+							<li>textarea</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Contenido</h2>
+						<h3>Validación de formularios</h3>
+						<pre><code data-trim>
+<form action="/your_backend_url" method="post"
+	  enctype="application/x-www-form-urlencoded">
+<label for="fname">First name:</label><br />
+<input required="required" placeholder="Enter your name"
+	   type="text" id="fname" name="name" /><br />
+<input type="submit" value="Submit">
+</form>
+						</code></pre>
 					</section>
 				</section>
 				<section>
