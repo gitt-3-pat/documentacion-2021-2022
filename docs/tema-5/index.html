@@ -712,7 +712,6 @@
 							<li>Cookies</li>
 							<li>Web Storage: local & session</li>
 							<li>IndexedDB</li>
-							<li>Cache</li>
 						</ul>
 					</section>
 					<section>
@@ -749,8 +748,39 @@
 						</ul>
 					</section>
 					<section>
+						<h3>Web Storage</h3>
+						<p>
+						<ul>
+						<li>
+							Permiten almacenar entre 5MB y 10MB de información; incluyendo texto y multimedia.
+						</li>
+						<li>
+							La información está almacenada en la computadora del cliente y NO es enviada en cada petición del servidor, a diferencia de las cookies.
+						</li>
+						<li>
+							Utilizan un número mínimo de peticiones al servidor para reducir el tráfico de la red.
+						</li>
+						<li>
+							Previenen pérdidas de información cuando se desconecta de la red.
+						</li>
+						<li>
+							La información es guardada por domino web (incluye todas las páginas del dominio).
+						</li>
+						</ul>
+						</p>
+					</section>
+					<section>
 						<h3>Web Storage: ejemplo</h3>
 						<img src="images/web-storage.png" width="100%"/>
+					</section>
+					<section>
+						<h3>Web Storage - Navegación Privada</h3>
+						<p>
+							La mayoría de los navegadores de hoy en día soportan una opción de privacidad llamada  'Modo incógnito', 'Navegación privada', o algo similar, que básicamente se asegura de que la sesión de navegación no deje rastros después de que el navegador se cierra.
+						</p>
+						<p>
+							La mayoría de los navegadores han optado por una estrategia donde las API de almacenamiento siguen disponibles y aparentemente completamente funcionales, con la única gran diferencia de que todos los datos almacenados son eliminados después de cerrar el navegador.
+						</p>
 					</section>
 					<section>
 						<h3>IndexedDB</h3>
@@ -797,6 +827,8 @@
 						<ul>
 							<li>Estructura de un formulario web</li>
 							<li>Ajax</li>
+							<li>API Fetch</li>
+							<li>Await/Async</li>
 						</ul>
 					</section>
 					<section>
@@ -821,17 +853,35 @@
 					</section>
 					<section>
 						<h2>Validación de formularios</h2>
+						<p>
+							Antes de enviar datos al servidor, es importante asegurarse de que se completan todos los controles de formulario requeridos, y en el formato correcto. Esto se denomina validación de formulario en el lado del cliente y ayuda a garantizar que los datos que se envían coinciden con los requisitos establecidos en los diversos controles de formulario.
+						</p>
+					</section>
+					<section>
+						<h2>Validación de formularios</h2>
+						<p>
+							La validación en el lado del cliente es una verificación inicial y una característica importante para garantizar una buena experiencia de usuario; mediante la detección de datos no válidos en el lado del cliente, el usuario puede corregirlos de inmediato. Si el servidor lo recibe y, a continuación, lo rechaza; se produce un retraso considerable en la comunicación entre el servidor y el cliente que insta al usuario a corregir sus datos.
+						</p>
+					</section>
+					<section>
+						<h2>Validación de formularios</h2>
+						<p>
+							Sin embargo, <b>¡la validación en el lado del cliente no debe considerarse una medida de seguridad exhaustiva!</b> Las aplicaciones siempre deben realizar comprobaciones de seguridad de los datos enviados por el formulario en el lado del servidor, así como también en el lado del cliente, porque <b>la validación en el lado del cliente es demasiado fácil de evitar</b>, por lo que los usuarios malintencionados pueden enviar fácilmente datos incorrectos a tu servidor.
+						</p>
+					</section>
+					<section>
+						<h2>Validación de formularios - Premisas</h2>
 						<ul>
-							<li>Validación client-side: formato correcto</li>
-							<li>Protección ante uso malicioso (en cierta medida)</li>
-							<li>UX</li>
+							<li>Obtener los datos correctos en el formato correcto. Nuestras aplicaciones no funcionarán correctamente si los datos de nuestros usuarios se almacenan en el formato incorrecto.</li>
+							<li>Proteger los datos de nuestros usuarios. Obligar a nuestros usuarios a introducir contraseñas seguras facilita proteger la información de su cuenta.</li>
+							<li>Queremos protegernos a nosotros mismo. Hay muchas formas en que los usuarios maliciosos puedan usar mal los formularios desprotegidos.</li>
 						</ul>
 					</section>
 					<section>
 						<h2>Tipos de validación de formularios</h2>
 						<ul>
 							<li>Validación HTML incorporada: mejor rendimiento, menos personalización.</li>
-							<li>Validación JavaScrpit: peor rendimiento, mayor personalización</li>
+							<li>Validación JavaScript: peor rendimiento, mayor personalización</li>
 						</ul>
 					</section>
 					<section>
@@ -950,9 +1000,28 @@
 					</section>
 					<section>
 						<h3>API Fetch</h3>
-						<p>API mucho mas intuitiva y fácil de usar</p>
-						<p>Se hace uso de la función nativa <code>fetch()</code></p>
-						<p>Basado en <code>Promises</code>: objetos <code>Request, Response</code></p>
+						<p>
+							La API Fetch proporciona una interfaz JavaScript para acceder y manipular partes del canal HTTP, tales como peticiones y respuestas. También provee un método global fetch() que proporciona una forma fácil y lógica de obtener recursos de forma asíncrona por la red.
+						</p>
+					</section>
+					<section>
+						<h3>API Fetch</h3>
+						<p>
+							Este tipo de funcionalidad se conseguía previamente haciendo uso de XMLHttpRequest. Fetch proporciona una alternativa mejor que puede ser empleada fácilmente por otras tecnologías como Service Workers. Fetch también aporta un único lugar lógico en el que definir otros conceptos relacionados con HTTP como CORS y extensiones para HTTP.
+						</p>
+					</section>
+					<section>
+						<h3>API Fetch vs JQuery.ajax()</h3>
+						<p>
+							<ul>
+								<li>
+							El objeto Promise devuelto desde fetch() no será rechazado con un estado de error HTTP incluso si la respuesta es un error HTTP 404 o 500. En cambio, este se resolverá normalmente (con un estado ok configurado a false), y  este solo sera rechazado ante un fallo de red o si algo impidió completar la solicitud.
+								</li>
+								<li>
+							Por defecto, fetch no enviará ni recibirá cookies del servidor, para mandar cookiesdeberan ser configuradas.
+								</li>
+							</ul>
+						</p>
 					</section>
 					<section>
 						<h3>Función Fetch</h3>
@@ -973,6 +1042,38 @@
 					<section>
 						<h3>Ejemplo Fetch POST formulario multipart</h3>
 						<img src="images/fetch-api-multipart.png" width="100%" />
+					</section>
+					<section>
+						<h3>Async/Await</h3>
+						<p>
+							Async/Await es una propuesta para extender la sintaxis de javaScript con las palabras reservadas async y await, cuyo uso permite tratar las funciones que devuelven promesas en nuestro código como si fueran funciones síncronas que devuelven directamente valores en vez de promesas.
+						</p>
+					</section>
+					<!-- Referencia https://www.adictosaltrabajo.com/2017/02/09/asyncawait-en-javascript/ -->
+					<section>
+						<h3>Async/Await ¿Cómo funciona?</h3>
+						<img src="images/await1.png" width="100%" />
+					</section>
+					<section>
+						<h3>Async/Await ¿Cómo funciona?</h3>
+						<img src="images/await2.png" width="100%" />
+					</section>
+					<section>
+						<h3>Async/Await ¿Cómo funciona?</h3>
+						<img src="images/await3.png" width="100%" />
+					</section>
+					<section>
+						<h3>Async/Await ¿Cómo funciona?</h3>
+						<img src="images/await4.png" width="100%" />
+					</section>
+					<section>
+						<h3>JavaScrpitAsync/Await - Conclusiones</h3>
+						<p>
+							Por el precio de incluir en nuestro código las palabras especiales async y await, podemos trabajar con código asíncrono de forma mucho más cómoda que utilizando promesas o callbacks.
+						</p>
+						<p>
+							Las funciones declaradas con async se transformen automáticamente en promesas, tiene el efecto de que es muy sencillo añadir incrementalmente async/await a una base de código que utiliza promesas.
+						</p>
 					</section>
 				</section>
 				<section>
