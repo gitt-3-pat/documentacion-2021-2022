@@ -1,0 +1,381 @@
+<!doctype html>
+<html>
+	<head>
+
+		<title>Tema 9</title>
+		<link rel="shortcut icon" href="images/favicon.ico" />
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<img src="images/comillas-logo.png" width="50%" />
+					<p>
+						Programación de Aplicaciones Telemáticas
+					</p>
+				</section>
+				<section>
+					<h2>Tema 9: Introducción a la persistencia de datos</h2>
+				</section>
+				<section>
+					<section>
+						<h2>Agenda</h2>
+						<h3>Sessión 1</h3>
+						<ul>
+							<li>Introducción</li>
+							<li>Tipos de base de datos</li>
+							<li>Bases de datos relacionales</li>
+							<li>Bases de datos clave-valor</li>
+							<li>Bases de datos documentales</li>
+							<li>Bases de datos orientadas a Time Series</li>
+							<li>Base de datos orientada a grafos</li>
+							<li>SQL</li>
+							<li>Referencias</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Introducción</h2>
+						<p>
+							A database is an organized collection of structured information, or data, typically
+							stored electronically in a computer system. A database is usually controlled by
+							a database management system (DBMS).
+						</p>
+						<img src="images/database.jpg" width="25%"/>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Tipos de bases de datos</h2>
+						<ul>
+							<li>Bases de datos relacionales</li>
+							<li>Bases de datos clave-valor</li>
+							<li>Bases de datos documentales</li>
+							<li>Bases de datos orientadas a Time Series</li>
+							<!--
+							<li>Bases de datos en Memoria</li>
+							<li>Bases de datos de Búsqueda</li>
+							-->
+							<li>Base de datos orientada a grafos</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Bases de datos relacionales</h2>
+						<h3>Introducción</h3>
+						<p>
+							Una base de datos relacional es un tipo de base de datos que almacena y
+							proporciona acceso a puntos de datos relacionados entre sí.
+							Las bases de datos relacionales se basan en el modelo relacional,
+							una forma intuitiva y directa de representar datos en tablas.
+						</p>
+					</section>
+					<section>
+						<h2>Bases de datos relacionales</h2>
+						<h3>Introducción</h3>
+						<p>
+							En una base de datos relacional, cada fila en una tabla es un registro con una ID única,
+							llamada clave. Las columnas de la tabla contienen los atributos de los datos y
+							cada registro suele tener un valor para cada atributo, lo que simplifica la creación
+							de relaciones entre los puntos de datos.
+						</p>
+					</section>
+					<section>
+						<h2>Bases de datos relacionales</h2>
+						<h3>Estructura de las bases de datos relacionales</h3>
+						<p>
+							El modelo relacional implica que las estructuras lógicas de los datos
+							(las tablas, las vistas y los índices) estén separadas de las estructuras de
+							almacenamiento físico. Gracias a esta separación, los administradores de bases de
+							datos pueden gestionar el almacenamiento físico de datos sin que eso influya
+							en el acceso a esos datos como estructura lógica.
+						</p>
+					</section>
+					<section>
+						<h2>Bases de datos relacionales</h2>
+						<h3>Estructura de las bases de datos relacionales</h3>
+						<p>Tables:</p>
+						<p>
+							A table is a collection of related data held in a table format within a database.
+							It consists of columns and rows.
+						</p>
+						<p>
+							https://en.wikipedia.org/wiki/Table_(database)
+						</p>
+					</section>
+					<section>
+						<h2>Bases de datos relacionales</h2>
+						<h3>Estructura de las bases de datos relacionales</h3>
+						<p>Tables:</p>
+						<img src="images/tables.png" width="60%"/>
+					</section>
+					<section>
+						<h2>Bases de datos relacionales</h2>
+						<h3>Estructura de las bases de datos relacionales</h3>
+						<p>Views:</p>
+						<p>
+							In a database, a view is the result set of a stored query on the data,
+							which the database users can query just as they would in a persistent database
+							collection object. This pre-established query command is kept in the database dictionary.
+						</p>
+						<p>
+							https://en.wikipedia.org/wiki/View_(SQL)
+						</p>
+					</section>
+					<section>
+						<h2>Bases de datos relacionales</h2>
+						<h3>Estructura de las bases de datos relacionales</h3>
+						<p>Views:</p>
+						<img src="images/views.gif" width="60%"/>
+					</section>
+					<section>
+						<h2>Bases de datos relacionales</h2>
+						<h3>Estructura de las bases de datos relacionales</h3>
+						<p>Indexes:</p>
+						<p>
+							A database index is a data structure that improves the speed of data retrieval operations
+							on a database table at the cost of additional writes and storage space to maintain
+							the index data structure.
+						</p>
+						<p>
+							https://en.wikipedia.org/wiki/Database_index
+						</p>
+					</section>
+					<section>
+						<h2>Bases de datos relacionales</h2>
+						<h3>Estructura de las bases de datos relacionales</h3>
+						<p>Indexes:</p>
+						<img src="images/index.gif" width="50%"/>
+					</section>
+					<section>
+						<h2>Bases de datos relacionales</h2>
+						<h3>Modelo Entidad-Relación</h3>
+						<p>
+							Un modelo entidad-relación es una herramienta para el modelo de datos,
+							la cual facilita la representación de entidades de una base de datos.
+							Fue definido por Peter Chen en 1976.
+						</p>
+						<img src="images/er-diagram.png" />
+					</section>
+					<section>
+						<h2>Bases de datos relacionales</h2>
+						<p>
+							Alternativas:
+						</p>
+						<table>
+							<tr>
+								<td><img src="images/oracle-database-logo.png" width="100%"></td>
+								<td><img src="images/sql-server-logo.png" width="25%"/></td>
+							</tr>
+							<tr>
+								<td><img src="images/postgresql-logo.png" width="75%"></td>
+								<td><img src="images/mysql-logo.png" width="35%"></td>
+							</tr>
+						</table>
+						<p>
+							https://db-engines.com/en/ranking/relational+dbms
+						</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Bases de datos clave valor</h2>
+						<h3>Introducción</h3>
+						<p>
+							Una base de datos clave-valor es un tipo de base de datos no relacional que utiliza
+							un método simple de clave-valor para almacenar datos.
+							Una base de datos clave-valor almacena datos como un conjunto de pares clave-valor
+							en los que una clave sirve como un identificador único.
+							Tanto las claves como los valores pueden ser cualquier cosa, desde objetos
+							simples hasta objetos compuestos complejos.
+						</p>
+					</section>
+					<section>
+						<h2>Bases de datos clave valor</h2>
+						<p>
+							Alternativas:
+						</p>
+						<ul>
+							<li>Redis</li>
+							<li>Amazon DynamoDB</li>
+						</ul>
+						<p>
+							https://db-engines.com/en/ranking/key-value+store
+						</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Bases de datos documentales</h2>
+						<h3>Introducción</h3>
+						<p>
+							Una base de datos documental está constituida por un conjunto de programas
+							que almacenan, recuperan y gestionan datos de documentos o datos de algún
+							modo estructurados. Este tipo de bases de datos constituyen una de las
+							principales subcategorías dentro de las denominadas bases de datos NoSQL.
+						</p>
+					</section>
+					<section>
+						<h2>Bases de datos documentales</h2>
+						<p>
+							Alternativas:
+						</p>
+						<img src="images/mongodb-logo.png" width="50%"/>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Bases de datos orientadas a Time Series</h2>
+						<h3>Introducción</h3>
+						<p>
+							Una base de datos de series de tiempo (TSDB) es un sistema de software
+							que está optimizado para manejar datos de series de tiempo, matrices de números
+							indexados por tiempo (un intervalo de fecha / hora)
+						</p>
+					</section>
+					<section>
+						<h2>Bases de datos orientadas a Time Series</h2>
+						<p>
+							Alternativas:
+						</p>
+						<ul>
+							<li>InfluxDB</li>
+							<li>Prometheus</li>
+						</ul>
+						<p>
+							https://db-engines.com/en/ranking/time+series+dbms
+						</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Base de datos orientada a grafos</h2>
+						<h3>Introducción</h3>
+						<p>
+							In computing, a graph database (GDB) is a database that uses graph structures for
+							semantic queries with nodes, edges, and properties to represent and store data.
+							A key concept of the system is the graph (or edge or relationship).
+							The graph relates the data items in the store to a collection of nodes and edges,
+							the edges representing the relationships between the nodes.
+						</p>
+					</section>
+					<section>
+						<h2>Base de datos orientada a grafos</h2>
+						<p>
+							Alternativas:
+						</p>
+						<ul>
+							<li>Neo4j</li>
+						</ul>
+						<p>
+							https://db-engines.com/en/ranking/graph+dbms
+						</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>SQL</h2>
+						<p>
+							SQL is a programming language used by nearly all relational databases to query,
+							manipulate, and define data, and to provide access control.
+						</p>
+						<img src="images/database.jpg" width="25%"/>
+					</section>
+					<section>
+						<h2>SQL</h2>
+						<p>
+							SELECT:
+						</p>
+						<pre><code data-trim>
+SELECT column1, column2, ...
+FROM table_name;
+						</code></pre>
+					</section>
+					<section>
+						<h2>SQL</h2>
+						<p>
+							INSERT:
+						</p>
+						<pre><code data-trim>
+INSERT INTO table_name (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...);
+						</code></pre>
+					</section>
+					<section>
+						<h2>SQL</h2>
+						<p>
+							UPDATE:
+						</p>
+						<pre><code data-trim>
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+						</code></pre>
+					</section>
+					<section>
+						<h2>SQL</h2>
+						<p>
+							DELETE:
+						</p>
+						<pre><code data-trim>
+DELETE FROM table_name WHERE condition;
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Referencias</h2>
+						<ul>
+							<li>https://www.iso.org/standard/63555.html</li>
+							<li>https://en.wikipedia.org/wiki/SQL</li>
+							<li>https://www.oracle.com/database/what-is-database/</li>
+							<li>https://es.wikipedia.org/wiki/Modelo_entidad-relaci%C3%B3n</li>
+							<li>https://db-engines.com/en/ranking</li>
+							<li>https://es.wikipedia.org/wiki/Base_de_datos_documental</li>
+						</ul>
+					</section>
+					<section>
+						<img src="images/book-database-internals.jpg" width="50%"/>
+					</section>
+					<section>
+						<img src="images/book-learning-sql.jpg" width="50%"/>
+					</section>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+			Reveal.configure(
+				{ showNotes: true },
+				{ showNotes: 'separate-page' },
+				{ pdfMaxPagesPerSlide: 1 }
+			);
+		</script>
+	</body>
+</html>
