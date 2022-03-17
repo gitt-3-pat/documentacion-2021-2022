@@ -37,23 +37,26 @@
 							<li>Test no funcionales</li>
 							<li>Piramide de testing</li>
 							<li>Tests unitarios</li>
-							<li>Test Doubles</li>
+							<!-- <li>Test Doubles</li> -->
 							<li>Consideracion de diseño de Tests</li>
 							<li>Librerias</li>
 							<!--
 							<li>JUnit</li>
 							<li>Mockito</li>
 							-->
-							<li>TDD</li>
+
 						</ul>
 					</section>
 					<section>
 						<h2>Agenda</h2>
 						<h3>Sessión 2</h3>
 						<ul>
-							<li>Test de Integración</li>
+							<li>TDD</li>
+							<li>Test End-to-End</li>
+							<!--
 							<li>Wiremock</li>
 							<li>TestContainers</li>
+							-->
 						</ul>
 					</section>
 					<!--
@@ -80,11 +83,15 @@
 						<img src="images/software-development-cycle.jpg" width="30%"/>
 					</section>
 				</section>
+				<!--
+				White box testing
+				Black box testing
+				-->
 				<section>
 					<section>
 						<h2>Test funcionales</h2>
 						<p>
-							Una prueba funcional es una prueba de tipo caja negra basada en la ejecución,
+							Una prueba funcional es una prueba basada en la ejecución,
 							revisión y retroalimentación de las funcionalidades previamente diseñadas para
 							el software.
 						</p>
@@ -106,7 +113,7 @@
 					<section>
 						<h2>Test no funcionales</h2>
 						<p>
-							Una prueba funcional es una prueba de tipo caja negra basada en la ejecución,
+							Una prueba funcional es una prueba basada en la ejecución,
 							revisión y retroalimentación de las funcionalidades previamente diseñadas para
 							el software.
 						</p>
@@ -115,10 +122,35 @@
 						<h2>Test no funcionales</h2>
 						<ul>
 							<li>Performance Testing</li>
-							<li>Monitoring Testing</li>
 							<li>Profiling Testing</li>
 							<li>Security Testing</li>
 						</ul>
+					</section>
+					<section>
+						<h2>Test no funcionales</h2>
+						<h3>Performance Testing</h3>
+						<p>
+							Performance testing is the practice of evaluating how a system performs in terms
+							of responsiveness and stability under a particular workload.
+						</p>
+					</section>
+					<section>
+						<h2>Test no funcionales</h2>
+						<h3>Profiling Testing</h3>
+						<p>
+							In software engineering, profiling ("program profiling", "software profiling")
+							is a form of dynamic program analysis that measures, for example, the space (memory)
+							or time complexity of a program, the usage of particular instructions,
+							or the frequency and duration of function calls.
+						</p>
+					</section>
+					<section>
+						<h2>Test no funcionales</h2>
+						<h3>Security Testing</h3>
+						<p>
+							Security testing is a process intended to reveal flaws in the security mechanisms of
+							an information system that protect data and maintain functionality as intended
+						</p>
 					</section>
 				</section>
 				<section>
@@ -153,6 +185,7 @@
 						<img src="images/unit-tests2.png" />
 					</section>
 				</section>
+				<!--
 				<section>
 					<section>
 						<h2>Test Doubles</h2>
@@ -178,6 +211,7 @@
 						</ul>
 					</section>
 				</section>
+				-->
 
 				<section>
 					<section>
@@ -286,8 +320,41 @@ public class MyUnitTest {
 }
 						</code></pre>
 					</section>
+					<section>
+						<h2>JUnit</h2>
+						<h3>Example 2</h3>
+						<p>Requirements:</p>
+						<pre><code data-trim>
+Write a program that prints the numbers from 1 to 100.
+But for multiples of three print “Fizz” instead of
+the number and for the multiples of five print “Buzz”.
+For numbers which are multiples
+of both three and five print “FizzBuzz”.
+						</code></pre>
+					</section>
+					<section>
+						<h2>JUnit</h2>
+						<h3>Example 2</h3>
+						<p>Requirements:</p>
+						<pre><code data-trim>
+public class FizzBuzzConverter {
+    public String convert(int toConvertToFizzBuzz) {
+        if(toConvertToFizzBuzz % 15 == 0) {
+            return "FizzBuzz";
+        }
+        if(toConvertToFizzBuzz % 5 == 0) {
+            return "Buzz";
+        }
+        if(toConvertToFizzBuzz % 3 == 0) {
+            return "Fizz";
+        }
+        return String.valueOf(toConvertToFizzBuzz);
+    }
+}
+						</code></pre>
+					</section>
 				</section>
-
+				<!--
 				<section>
 					<section>
 						<h2>Mockito</h2>
@@ -357,10 +424,7 @@ public void shouldFetchWeatherForecastFromGlobalServiceIfNotAvailableLocally() {
 						</code></pre>
 					</section>
 				</section>
-				<section>
-					<h2>TDD</h2>
-					<img src="images/tdd.png" />
-				</section>
+				-->
 				<section>
 					<h2>Referencias</h2>
 					<ul>
@@ -379,7 +443,7 @@ public void shouldFetchWeatherForecastFromGlobalServiceIfNotAvailableLocally() {
 					<h2>Referencias</h2>
 					<ul>
 						<li>https://junit.org/junit5/</li>
-						<li>https://site.mockito.org/</li>
+						<!-- <li>https://site.mockito.org/</li> -->
 					</ul>
 				</section>
 				<section>
@@ -393,6 +457,11 @@ public void shouldFetchWeatherForecastFromGlobalServiceIfNotAvailableLocally() {
 					<h2>Sessión 2</h2>
 				</section>
 				<section>
+					<h2>TDD</h2>
+					<img src="images/tdd.png" />
+				</section>
+				<section>
+					<!--
 					<section>
 						<h2>Test de integración</h2>
 						<p>
@@ -401,10 +470,19 @@ public void shouldFetchWeatherForecastFromGlobalServiceIfNotAvailableLocally() {
 							and tested as a group.
 						</p>
 					</section>
+					-->
 					<section>
-						<h2>Test de integración</h2>
+						<h2>Test End-to-End</h2>
+						<p>
+						End-to-end testing is a technique that tests the entire software product
+						from beginning to end to ensure the application flow behaves as expected.
+						</p>
+					</section>
+					<section>
+						<h2>Test End-to-End</h2>
 						<img src="images/scc1.png" />
 					</section>
+					<!--
 					<section>
 						<h2>Test de integración</h2>
 						<img src="images/scc2.png" />
@@ -413,7 +491,13 @@ public void shouldFetchWeatherForecastFromGlobalServiceIfNotAvailableLocally() {
 						<h2>Test de integración</h2>
 						<img src="images/scc3.png" />
 					</section>
+					-->
+					<section>
+						<h2>Test de integración</h2>
+						<img src="images/example.png" />
+					</section>
 				</section>
+				<!--
 				<section>
 					<section>
 						<h2>Wiremock</h2>
@@ -446,6 +530,7 @@ public void exampleTest() {
 						</code></pre>
 					</section>
 				</section>
+				-->
 				<!--
 				<section>
 					<section>
