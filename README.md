@@ -24,7 +24,19 @@
 ## ¿Como probar en local?
 
 ````
+sdk env
 cd docs
+````
+
+With `java`:
+
+```
+jwebserver -p 8000
+```
+
+With `python`:
+
+```
 python3 -m http.server
 python -m SimpleHTTPServer
-````
+```
