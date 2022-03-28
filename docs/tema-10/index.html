@@ -33,14 +33,26 @@
 						<h3>Sessión 1</h3>
 						<ul>
 							<li>Introducción</li>
-							<li>Estandares</li>
+							<li>Estándares</li>
 							<li>Spring Data</li>
-							<li>Conceptos</li>
-							<li>Repositorios</li>
-							<li>Relaciones</li>
-							<li>Transacciones</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Agenda</h2>
+						<h3>Sessión 2</h3>
+						<ul>
 							<li>Schema de base de datos</li>
+							<li>Repositorios</li>
+							<li>Transacciones</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Agenda</h2>
+						<h3>Sessión 3</h3>
+						<ul>
 							<li>Testing</li>
+							<li>JDBCTemplate</li>
+							<li>SQL</li>
 						</ul>
 					</section>
 				</section>
@@ -130,11 +142,12 @@
 						</ul>
 					</section>
 					<section>
-						<h2>Spring Data: technologies</h2>
+						<h2>Spring Data</h2>
 						<img src="images/image-2.png" />
 					</section>
 					<section>
-						<h2>Spring Data JDBC</h2>
+						<h2>Spring Data</h2>
+						<h3>Spring Data JDBC</h3>
 						<ul>
 							<li>ORM simple y limitado</li>
 							<li>Permite implementar repositorios basados en JDBC</li>
@@ -143,15 +156,24 @@
 						</ul>
 					</section>
 					<section>
-						<h2>Spring Data JDBC</h2>
+						<h2>Spring Data</h2>
+						<h3>Spring Data JDBC</h3>
 						<img src="images/image-3.png" />
 					</section>
 					<section>
-						<h2>Spring Data JDBC: maven dependencies</h2>
-						<img src="images/image-4.png" />
+						<h2>Spring Data</h2>
+						<h3>Spring Data JDBC</h3>
+<p>Maven dependency:</p>
+						<pre><code data-trim>
+< dependency>
+  < groupId>org.springframework.boot< /groupId>
+  < artifactId>spring-boot-starter-data-jdbc< /artifactId>
+< /dependency>
+						</code></pre>
 					</section>
 					<section>
-						<h2>Spring Data JDBC: DataSource</h2>
+						<h2>Spring Data</h2>
+						<h3>Spring Data JDBC: DataSource</h3>
 						<ul>
 							<li>Lo primero que se debe configurar para poder hacer uso se Spring Data JDBC es un objeto DataSource</li>
 							<li>Este objeto representa la conexión con la fuente de datos (DB)</li>
@@ -160,25 +182,192 @@
 						</ul>
 					</section>
 					<section>
-						<h2>Spring Data JDBC: DataSource</h2>
+						<h2>Spring Data</h2>
+						<h3>Spring Data JDBC: DataSource</h3>
 						<img src="images/image-5.png" />
 						<img src="images/image-6.png" />
 					</section>
+				</section>
+				<section>
+					<h2>Referencias</h2>
+					<ul>
+						<li style="font-size: 0.8em;">https://spring.io/projects/spring-data</li>
+						<li style="font-size: 0.8em;">https://spring.io/projects/spring-data-jdbc</li>
+						<li style="font-size: 0.8em;">https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html#spring.datasource.url</li>
+						<li style="font-size: 0.8em;">https://docs.spring.io/spring-data/jdbc/docs/current/reference/html/</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Sessión 2</h2>
+				</section>
+				<section>
 					<section>
-						<h2>Spring Data JDBC: Templates</h2>
-						<ul><li>Gracias a la AutoConfiguration de Spring Boot, al usar Spring Data JDBC, se autoconfiguran dos Beans en base al DataSource definido que podemos usar para realizar operaciones contra la base de datos:  JdbcTemplate y NamedParameterJdbcTemplate</li></ul>
-						<img src="images/image-7.png" />
+						<h2>Schemas de base de datos</h2>
+						<h3>¿Que es un Schema?</h3>
+						<p>
+							The database schema is its structure described in a formal language supported by
+							the database management system (DBMS). The term "schema" refers to the organization
+							of data as a blueprint of how the database is constructed
+							(divided into database tables in the case of relational databases).
+						</p>
 					</section>
 					<section>
-						<h2>Spring Data JDBC: Templates</h2>
-						<ul><li>Su uso es similar al que usamos con JDBC puro</li></ul>
-						<img src="images/image-8.png" />
+						<h2>Schemas de base de datos</h2>
+						<h3>DDL</h3>
+						<p>
+							In the context of SQL, data definition or data description language (DDL)
+							is a syntax for creating and modifying database objects such as tables,
+							indices, and users. DDL statements are similar to a computer programming language
+							for defining data structures, especially database schemas.
+							Common examples of DDL statements include CREATE, ALTER, and DROP.
+						</p>
 					</section>
 					<section>
-						<h2>Spring Data JDBC: Templates</h2>
-						<img src="images/image-9.png" />
+						<h2>Schemas de base de datos</h2>
+						<p>Ejemplo de creacion de Schema con tabla:</p>
+						<pre><code data-trim>
+-- MI COMENTARIO EN SQL
+DROP TABLE IF EXISTS TABLEDEMO;
+CREATE TABLE MY_TABLE (
+    ID INTEGER IDENTITY PRIMARY KEY,
+    FIELD1 VARCHAR(255) NOT NULL,
+    FIELD2 NUMERIC NOT NULL,
+    MY_DATE DATE NOT NULL,
+    MY_TIME TIME NOT NULL,
+    FLAG BOOLEAN NOT NULL
+);
+						</code></pre>
+					</section>
+					<section>
+						<h2>Schemas de base de datos</h2>
+						<p>Las bases de datos almacenan datos de distinta naturaleza:</p>
+						<ul>
+							<li>INTEGER</li>
+							<li>NUMERIC</li>
+							<li>VARCHAR</li>
+							<li>DATE</li>
+							<li>TIME</li>
+							<li>BOOLEAN</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Schemas de base de datos</h2>
+						<p>Y tienen que mapear con tipos de datos Java:</p>
+						<ul>
+							<li>INTEGER -> Long</li>
+							<li>NUMERIC -> BigDecimal</li>
+							<li>VARCHAR -> String</li>
+							<li>DATE -> LocalDate</li>
+							<li>TIME -> LocalTime</li>
+							<li>BOOLEAN -> Boolean</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Schemas de base de datos</h2>
+						<img src="images/example.png" width="50%" />
 					</section>
 				</section>
+				<section>
+					<section>
+						<h2>Repositorios</h2>
+						<ul>
+							<li style="font-size: 0.8em;">Interfaz de acceso a base de datos. Desde estos beans se realizan todas las operaciones del CRUD</li>
+							<li style="font-size: 0.8em;">Son interfaces que extienden de CrudRepository</li>
+							<li style="font-size: 0.8em;">CrudRepository trae ya todos los métodos básicos CRUD: findAll(), delete(), findById(), save()…</li>
+							<li style="font-size: 0.8em;">Se puede crear más métodos con el uso de la anotación @Query</li>
+							<li style="font-size: 0.8em;">Siguiendo el paradigma DDD, un repositorio por Agreggate Root</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Repositorios</h2>
+						<pre><code data-trim>
+public interface MyTableRepository
+extends CrudRepository < MyTable, Long> { }
+						</code></pre>
+
+					</section>
+					<section>
+						<h2>Repositorios</h2>
+						<pre><code data-trim>
+@Table("MY_TABLE")
+public class MyTable {
+	private @Column("ID") @Id Long id;
+	private @Column("FIELD1") String field1;
+	private @Column("FIELD2") BigDecimal field2;
+	private @Column("MY_DATE") LocalDate date;
+	private @Column("MY_TIME") LocalTime time;
+	private @Column("FLAG") Boolean flag;
+}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Repositorios</h2>
+						<p>La interface CrudRepository proporciona muchos metodos muy utiles:</p>
+						<pre><code data-trim>
+public interface CrudRepository < T, ID> extends Repository < T, ID> {
+< S extends T > S save(S entity);
+< S extends T > Iterable< S> saveAll(Iterable< S> entities);
+Optional< T> findById(ID id);
+boolean existsById(ID id);
+Iterable< T> findAll();
+Iterable< T> findAllById(Iterable< ID> ids);
+long count();
+void deleteById(ID id);
+void delete(T entity);
+void deleteAllById(Iterable< ? extends ID> ids);
+void deleteAll(Iterable< ? extends T> entities);
+void deleteAll();
+}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Repositorios</h2>
+						<p>Si el desarrollo necesita crear una consulta especifica, es posible realizarla
+							atraves de la anotacion @Query:</p>
+						<pre><code data-trim>
+public interface PersonRepository extends CrudRepository< Person, Long> {
+	@Query("SELECT * FROM PERSON") //Sin parámetros
+	List< Person> myQuery();
+
+	@Query("UPDATE PERSON SET " +
+			"PERSON.FIRST_NAME= :userName , " +
+			"PERSON.LAST_NAME= :lastName " +
+			"WHERE PERSON.ID= :id ") //Con parámetros
+	int updatePerson(
+			@Param("userName") String userName,
+			@Param("lastName") String lastName,
+			@Param("id") Long id);
+}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Repositorios</h2>
+						<img src="images/example.png" width="50%" />
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Transacciones</h2>
+						<ul>
+							<li style="font-size: 0.8em;">Cuando se realizan operaciones de escritura es necesario manejar transacciones para evitar inconsistencias en la base de dato</li>
+							<li style="font-size: 0.8em;">En Spring podemos hacer uso de la anotación @Transactional a nivel de método, en repositorios y servicios</li>
+							<li style="font-size: 0.8em;">Si se produce alguna excepción dentro de dicho método, Spring hará un rollback de dicha transacción, dejando la BD en el estado original</li>
+							<li style="font-size: 0.8em;">Las operaciones de escritura por defecto de los repositorios que extienden de CrudRepository son por defecto, transaccionales</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Transacciones: @Transactional</h2>
+						<img src="images/image-25.png" />
+					</section>
+					<!--
+					<section>
+						<h2>Transacciones: @Modifying</h2>
+						<ul><li>Las queries que sean del tipo UPDATE y DELETE, además de ser transaccionales deberán llevar la anotación @Modifying para poder ser ejecutadas</li></ul>
+						<img src="images/image-26.png" />
+					</section>
+					-->
+				</section>
+				<!--
 				<section>
 					<section>
 						<h2>Conceptos: Entity</h2>
@@ -224,22 +413,8 @@
 						<img src="images/image-18.png" width="60%"/>
 					</section>
 				</section>
-				<section>
-					<section>
-						<h2>Repositorios</h2>
-						<ul>
-							<li style="font-size: 0.8em;">Interfaz de acceso a base de datos. Desde estos beans se realizan todas las operaciones del CRUD</li>
-							<li style="font-size: 0.8em;">Son interfaces que extienden de CrudRepository</li>
-							<li style="font-size: 0.8em;">CrudRepository trae ya todos los métodos básicos CRUD: findAll(), delete(), findById(), save()…</li>
-							<li style="font-size: 0.8em;">Se puede crear más métodos con el uso de la anotación @Query</li>
-							<li style="font-size: 0.8em;">Siguiendo el paradigma DDD, un repositorio por Agreggate Root</li>
-						</ul>
-					</section>
-					<section>
-						<h2>Repositorios</h2>
-						<img src="images/image-19.png" />
-					</section>
-				</section>
+				-->
+				<!--
 				<section>
 					<section>
 						<h2>Relaciones</h2>
@@ -255,55 +430,20 @@
 						<img src="images/image-21.png" width="50%" />
 						<img src="images/image-22.png" width="50%" />
 					</section>
-					<section>
-						<h2>One To Many</h2>
-						<img src="images/image-23.png" width="50%" />
-						<img src="images/image-24.png" width="50%" />
-					</section>
-					<section>
-						<h2>Many To Many</h2>
-						<img src="images/image-16.png" width="60%"/>
-						<img src="images/image-17.png" width="60%"/>
-						<img src="images/image-18.png" width="60%"/>
-					</section>
+				</section>
+				-->
+				<section>
+					<h2>References:</h2>
+					<ul>
+						<li>https://en.wikipedia.org/wiki/Database_schema</li>
+						<li>https://en.wikipedia.org/wiki/Data_definition_language</li>
+						<li>http://www.h2database.com/html/datatypes.html</li>
+						<li>http://www.h2database.com/html/grammar.html</li>
+						<li>https://www.postgresql.org/docs/current/datatype.html</li>
+					</ul>
 				</section>
 				<section>
-					<section>
-						<h2>Transacciones</h2>
-						<ul>
-							<li style="font-size: 0.8em;">Cuando se realizan operaciones de escritura es necesario manejar transacciones para evitar inconsistencias en la base de dato</li>
-							<li style="font-size: 0.8em;">En Spring podemos hacer uso de la anotación @Transactional a nivel de método, en repositorios y servicios</li>
-							<li style="font-size: 0.8em;">Si se produce alguna excepción dentro de dicho método, Spring hará un rollback de dicha transacción, dejando la BD en el estado original</li>
-							<li style="font-size: 0.8em;">Las operaciones de escritura por defecto de los repositorios que extienden de CrudRepository son por defecto, transaccionales</li>
-						</ul>
-					</section>
-					<section>
-						<h2>Transacciones: @Transactional</h2>
-						<img src="images/image-25.png" />
-					</section>
-					<section>
-						<h2>Transacciones: @Modifying</h2>
-						<ul><li>Las queries que sean del tipo UPDATE y DELETE, además de ser transaccionales deberán llevar la anotación @Modifying para poder ser ejecutadas</li></ul>
-						<img src="images/image-26.png" />
-					</section>
-				</section>
-				<section>
-					<section>
-						<h2>Schema de base de datos</h2>
-						<ul>
-							<li>Cuando levantamos nuestra aplicación, ésta necesita que la base de datos esté activa y que exista el schema</li>
-							<li>Para esta tarea, Spring nos proporciona unas properties donde podemos indicarle rutas a scripts SQL que ejecutará al levantar la aplicación</li>
-						</ul>
-					</section>
-					<section>
-						<h2>Schema de base de datos</h2>
-						<img src="images/image-27.png" width="70%" />
-					</section>
-					<section>
-						<h2>Schema de base de datos</h2>
-						<img src="images/image-28.png" />
-						<img src="images/image-29.png" />
-					</section>
+					<h2>Sessión 3</h2>
 				</section>
 				<section>
 					<section>
@@ -322,41 +462,22 @@
 						<h2>Testing: Datos de inicialización</h2>
 						<img src="images/image-32.png" />
 					</section>
-					<section>
-						<h2>Test Containers</h2>
-						<ul>
-							<li>Utilizados en el contexto de Testing</li>
-							<li>Nos permiten crear de manera sencilla contenedores a modo de sandbox para ejecutar los tests</li>
-							<li>Reemplazan a los servicios reales con los que trabajaría nuestra aplicación </li>
-							<li>P.e. Una base de datos</li>
-						</ul>
-					</section>
-					<section>
-						<h2>Test Containers: PostgreSQL</h2>
-						<img src="images/image-33.png" />
-					</section>
-					<section>
-						<h2>Test Containers: PostgreSQL</h2>
-						<img src="images/image-34.png" />
-					</section>
-					<section>
-						<h2>Test Containers: PostgreSQL</h2>
-						<img src="images/image-35.png" />
-					</section>
 				</section>
 				<section>
-					<h2>Referencias</h2>
-					<ul>
-						<li style="font-size: 0.8em;">https://spring.io/projects/spring-data</li>
-						<li style="font-size: 0.8em;">https://spring.io/projects/spring-data-jdbc</li>
-						<li style="font-size: 0.8em;">https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html#spring.datasource.url</li>
-						<li style="font-size: 0.8em;">https://javabydeveloper.com/</li>
-						<li style="font-size: 0.8em;">https://medium.com/ingenier%C3%ADa-en-tiendanube/domain-driven-design-y-el-modelo-de-actores-deae7675a921</li>
-						<li style="font-size: 0.8em;">https://airbrake.io/blog/software-design/domain-driven-design</li>
-						<li style="font-size: 0.8em;">https://www.paradigmadigital.com/dev/ddd-dominio-implica-crecer-fuerte/</li>
-						<li style="font-size: 0.8em;">https://docs.spring.io/spring-data/jdbc/docs/current/reference/html/</li>
-						<li style="font-size: 0.8em;">https://www.testcontainers.org/modules/databases/postgres/</li>
-					</ul>
+					<section>
+						<h2>Spring Data JDBC: Templates</h2>
+						<ul><li>Gracias a la AutoConfiguration de Spring Boot, al usar Spring Data JDBC, se autoconfiguran dos Beans en base al DataSource definido que podemos usar para realizar operaciones contra la base de datos:  JdbcTemplate y NamedParameterJdbcTemplate</li></ul>
+						<img src="images/image-7.png" />
+					</section>
+					<section>
+						<h2>Spring Data JDBC: Templates</h2>
+						<ul><li>Su uso es similar al que usamos con JDBC puro</li></ul>
+						<img src="images/image-8.png" />
+					</section>
+					<section>
+						<h2>Spring Data JDBC: Templates</h2>
+						<img src="images/image-9.png" />
+					</section>
 				</section>
 			</div>
 		</div>
