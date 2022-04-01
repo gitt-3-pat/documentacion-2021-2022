@@ -458,26 +458,68 @@ public interface PersonRepository extends CrudRepository< Person, Long> {
 						<img src="images/image-30.png" />
 						<img src="images/image-31.png" width="70%" />
 					</section>
-					<section>
-						<h2>Testing: Datos de inicialización</h2>
-						<img src="images/image-32.png" />
-					</section>
 				</section>
 				<section>
-					<section>
-						<h2>Spring Data JDBC: Templates</h2>
-						<ul><li>Gracias a la AutoConfiguration de Spring Boot, al usar Spring Data JDBC, se autoconfiguran dos Beans en base al DataSource definido que podemos usar para realizar operaciones contra la base de datos:  JdbcTemplate y NamedParameterJdbcTemplate</li></ul>
-						<img src="images/image-7.png" />
-					</section>
 					<section>
 						<h2>Spring Data JDBC: Templates</h2>
 						<ul><li>Su uso es similar al que usamos con JDBC puro</li></ul>
 						<img src="images/image-8.png" />
 					</section>
 					<section>
+						<h2>Escenarios</h2>
+						<ul>
+							<li>Bases de datos no normalizadas ya existentes, cuya estructura no podemos modificar , y que resultan muy complejas de modelar con entidades</li>
+							<li>Tenemos que utilizar directamente SQL para aprovechar las funcionalidades proporcionadas por la propia de base datos y/o optimizar al máximo el rendimiento</li>
+							<li>Capas de persistencia que se basan en el uso intensivo de procedimientos almacenados</li>
+						</ul>
+					</section>
+					<section>
 						<h2>Spring Data JDBC: Templates</h2>
 						<img src="images/image-9.png" />
 					</section>
+
+					<section>
+						<h2>Ejemplo: SELECT</h2>
+						<img src="images/example-select.png" />
+					</section>
+
+					<section>
+						<h2>Ejemplo: INSERT</h2>
+						<img src="images/example-insert.png" />
+					</section>
+
+					<section>
+						<h2>Ejemplo: MAPPING</h2>
+						<img src="images/example-mapping.png" />
+						<img src="images/example-mapping2.png" />
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>SQL JOINS</h2>
+					</section>
+					<section>
+						<h2>SQL JOINS</h2>
+						<h3>Tipos</h3>
+						<img src="images/joins.png" width="60%"/>
+					</section>
+					<section>
+						<h2>SQL JOINS</h2>
+						<img src="images/example.png" width="50%" />
+					</section>
+					<!--
+					<section>
+						<h2>Tipos</h2>
+						<img src="images/jokejoin.png" width="50%"/>
+					</section>
+					-->
+				</section>
+				<section>
+					<h2>References:</h2>
+					<ul>
+						<li>https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing</li>
+						<li>https://en.wikipedia.org/wiki/Join_(SQL)</li>
+					</ul>
 				</section>
 			</div>
 		</div>
