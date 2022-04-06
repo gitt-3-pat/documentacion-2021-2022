@@ -36,7 +36,7 @@
 							<li>Mecanismos de Seguridad</li>
 							<li>Autenticación y Autorización</li>
 							<li>Cabeceras HTTP orientadas a la seguridad</li>
-							<li>Spring Framework</li>
+							<!-- <li>Spring Framework</li> -->
 							<li>Enterprise Security</li>
 						</ul>
 					</section>
@@ -98,12 +98,27 @@
 						</p>
 					</section>
 					<section>
-						<img src="images/tema17-1.png" width="100%" />
+						<h2>WWW-Authenticate</h2>
+						<img src="images/tema17-1.png" width="80%" />
+					</section>
+					<section>
+						<h2>WWW-Authenticate</h2>
+						<img src="images/example.png" width="50%" />
 					</section>
 					<section>
 						<h2>OAuth 2.0</h2>
 						<p align="left">
-							Es un estándar abierto para la autorización de APIs, que nos permite compartir información entre sitios sin tener que compartir la identidad. <br>
+							Es un estándar abierto para la autorización de APIs, que nos permite compartir
+							información entre sitios sin tener que compartir la identidad. <br>
+						</p>
+					</section>
+					<section>
+						<h2>OAuth 2.0</h2>
+						<img src="images/oauth2.png" width="70%" />
+					</section>
+					<section>
+						<h2>OAuth 2.0</h2>
+						<p align="left">
 							Proporciona diferentes flujos de autenticación:
 						</p>
 						<ul>
@@ -114,25 +129,42 @@
 						</ul>
 					</section>
 					<section>
+						<h2>OAuth 2.0</h2>
+						<h3>Client Credentials (M2M)</h3>
 						<p align="left">
-							<b>Client Credentials:</b> este proceso de autorización es especialmente sencillo y se utiliza cuando un cliente quiere acceder a datos que no tienen propietario o que no requieren autorización.
+							The Client Credentials grant type is used by clients to obtain an access token outside of the context of a user.
+
+							This is typically used by clients to access resources about themselves rather than to access a user's resources.
+						</p>
+						<p>
+							https://oauth.net/2/grant-types/client-credentials/
 						</p>
 					</section>
 					<section>
-						<img src="images/tema17-client-credentials.png" width="100%" />
+						<h2>OAuth 2.0</h2>
+						<h3>Client Credentials (M2M)</h3>
+						<img src="images/tema17-client-credentials.png" width="70%" />
 					</section>
 					<section>
+						<h2>OAuth 2.0</h2>
+						<h3>Client Credentials (M2M)</h3>
 						<pre>
 							<code data-trim>
 ### Request Token
-
-curl --location --request POST 'https://hostname:port/auth/token' \
+curl --location \
+--request POST 'https://hostname:port/auth/token' \
 --data-urlencode 'grant_type=client_credentials' \
 --data-urlencode 'client_id=5ff34-5bf4-11ec-846a-f9773bbac985' \
 --data-urlencode 'client_secret=9e84fc5d-440b-45c0-84fc-55ddaadd'
-
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2>OAuth 2.0</h2>
+						<h3>Client Credentials (M2M)</h3>
+						<pre>
+							<code data-trim>
 ### Response Token
-
 {
     "access_token": "eyJhbGciOiJSUzI...",
     "expires_in": 60,
@@ -147,27 +179,42 @@ curl --location --request POST 'https://hostname:port/auth/token' \
 						</pre>
 					</section>
 					<section>
+						<h2>OAuth 2.0</h2>
+						<h3>Password</h3>
 						<p align="left">
-							<b>Password:</b> el usuario proporciona sus credenciales de servicio (nombre de usuario y contraseña) directamente a la aplicación, la cual utiliza dichas credenciales para obtener del servicio un token de acceso. Este tipo de autorización solo debe habilitarse en el servidor de autorización, si otros flujos no son viables.
+							The Password grant type is a way to exchange a user's credentials for an access token. Because the client application has to collect the user's password and send it to the authorization server, it is not recommended that this grant be used at all anymore.
+							This flow provides no mechanism for things like multifactor authentication or delegated accounts, so is quite limiting in practice.
 						</p>
+						<p>https://oauth.net/2/grant-types/password/</p>
 					</section>
 					<section>
-						<img src="images/tema17-password.png" width="100%" />
+						<h2>OAuth 2.0</h2>
+						<h3>Password</h3>
+						<img src="images/tema17-password.png" width="80%" />
 					</section>
 					<section>
+						<h2>OAuth 2.0</h2>
+						<h3>Password</h3>
 						<pre>
 							<code data-trim>
 ### Request Token
-
-curl --location --request POST 'https://hostname:port/auth/token' \
+curl --location  \
+--request POST 'https://hostname:port/auth/token' \
 --data-urlencode 'grant_type=password' \
 --data-urlencode 'client_id=5ff34-5bf4-11ec-846a-f9773bbac985' \
 --data-urlencode 'client_secret=9e84fc5d-440b-45c0-84fc-55ddaadd' \
 --data-urlencode 'username=demo' \
 --data-urlencode 'password=demo-pass' 
 
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2>OAuth 2.0</h2>
+						<h3>Password</h3>
+						<pre>
+							<code data-trim>
 ### Response Token
-
 {
     "access_token": "eyJhbGciOiJSUzI...",
     "expires_in": 60,
@@ -182,14 +229,21 @@ curl --location --request POST 'https://hostname:port/auth/token' \
 						</pre>
 					</section>
 					<section>
+						<h2>OAuth 2.0</h2>
+						<h3>Authorization Code</h3>
 						<p align="left">
-							<b>Authorization Code:</b> Flujo de autenticación más usado, ya que ha sido optimizado para aplicaciones del lado del servidor, en donde el código fuente no está expuesto públicamente y se puede mantener la confidencialidad del secreto de cliente. Este es un flujo basado en la redirection, que significa que la aplicación debe ser capaz de interactuar con el cliente del usuario (i.e. el navegador web) y recibir códigos de autorización API.
+							The Authorization Code grant type is used by confidential and public clients to exchange an authorization code for an access token.
+
+							After the user returns to the client via the redirect URL, the application will get the authorization code from the URL and use it to request an access token.
 						</p>
+						<p>https://oauth.net/2/grant-types/authorization-code/</p>
 					</section>
 					<section>
 						<img src="images/tema17-authorization-code.png" width="70%" />
 					</section>
 					<section>
+						<h2>OAuth 2.0</h2>
+						<h3>Authorization Code</h3>
 						<pre>
 							<code data-trim>
 ### Request Authorization Code
@@ -199,16 +253,31 @@ https://hostname:port/auth?client_id=5ff34-5bf4-11ec-846a-f9773bbac985&response_
 ### Response Authorization Code
 
 url-callback/?session_state=f7602dd4-5ad6-4dd5-900b-3e0af684d704&code=1dd6385c-c71e-46b9-87dd-6ae55b018528.f7602dd4-5ad6-4dd5-900b-3e0af684d704.913231ef-7583-4638-8605-e6303ed14e8d
-
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2>OAuth 2.0</h2>
+						<h3>Authorization Code</h3>
+						<pre>
+							<code data-trim>
 ### Request Token
 
-curl --location --request POST 'https://hostname:port/auth/token' \
+curl --location \
+--request POST 'https://hostname:port/auth/token' \
 --data-urlencode 'grant_type=authorization_code' \
 --data-urlencode 'client_id=5ff34-5bf4-11ec-846a-f9773bbac985' \
 --data-urlencode 'client_secret=9e84fc5d-440b-45c0-84fc-55ddaadd' \
 --data-urlencode 'code=1e6fdbe5-6c99-4904-9e0d-c976e0ccedc4.f7602dd4-5ad6-4dd5-900b-3e0af684d704.913231ef-7583-4638-8605-e6303ed14e8d' \
 --data-urlencode 'redirect_uri=https://localhost:8083/callback'
-
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2>OAuth 2.0</h2>
+						<h3>Authorization Code</h3>
+						<pre>
+							<code data-trim>
 ### Response Token
 
 {
@@ -225,15 +294,26 @@ curl --location --request POST 'https://hostname:port/auth/token' \
 						</pre>
 					</section>
 					<section>
+						<h2>OAuth 2.0</h2>
+						<h3>Implicit Flow</h3>
 						<p align="left">
-							<b>Implicit Flow:</b> se utiliza para aplicaciones móviles y aplicaciones web (i.e. aplicaciones que se ejecutan en un navegador web), donde no se garantiza la confidencialidad del secreto de cliente.<br>
-							Este flujo de autenticación no admite tokens de actualización.
+							The Implicit flow was a simplified OAuth flow previously recommended for native apps and JavaScript apps where the access token was returned immediately without an extra authorization code exchange step.
+
+							It is not recommended to use the implicit flow (and some servers prohibit this flow entirely)
+							<!--
+							due to the inherent risks of returning access tokens in an HTTP redirect without any confirmation that it has been received by the client.
+							-->
 						</p>
+						<p>https://oauth.net/2/grant-types/implicit/</p>
 					</section>
 					<section>
-						<img src="images/tema17-implicit.png" width="100%" />
+						<h2>OAuth 2.0</h2>
+						<h3>Implicit Flow</h3>
+						<img src="images/tema17-implicit.png" width="80%" />
 					</section>
 					<section>
+						<h2>OAuth 2.0</h2>
+						<h3>Implicit Flow</h3>
 						<pre>
 							<code data-trim>
 ### Request Implicit Flow
@@ -243,9 +323,15 @@ https://hostname:port/oauth2/authorize?response_type=id_token+token
 &redirect_uri=http://localhost:8080/callback/oauth2client
 
 ### Show Login Form
-
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2>OAuth 2.0</h2>
+						<h3>Implicit Flow</h3>
+						<pre>
+							<code data-trim>
 ### Response Token
-
 {
     "access_token": "eyJhbGciOiJSUzI...",
     "expires_in": 60,
@@ -284,7 +370,15 @@ https://hostname:port/oauth2/authorize?response_type=id_token+token
 						</p>
 					</section>
 					<section>
+						<h2>JSON Web Token (JWT)</h2>
 						<img src="images/tema17-4.png" width="100%" />
+					</section>
+					<section>
+						<h2>JSON Web Token (JWT)</h2>
+						<img src="images/example.png" width="50%" />
+						<p>
+							https://jwt.io/
+						</p>
 					</section>
 				</section>
 				<section>
@@ -326,6 +420,7 @@ https://hostname:port/oauth2/authorize?response_type=id_token+token
 						</ul>
 					</section>
 				</section>
+				<!--
 				<section>
 					<section>
 						<h2>Spring Framework</h2>
@@ -341,7 +436,6 @@ https://hostname:port/oauth2/authorize?response_type=id_token+token
 							<li>DSL de Seguridad (Lambda DSL)</li>
 						</ul>
 					</section>
-					<!-- https://www.arquitecturajava.com/spring-security-annotation-y-su-configuracion/ -->
 					<section>
 						<h4>Configuración</h4>
 						<ul>
@@ -371,6 +465,7 @@ https://hostname:port/oauth2/authorize?response_type=id_token+token
 						</ul>
 					</section>
 				</section>
+				-->
 				<section>
 					<section>
 						<h2>Enterprise Security</h2>
@@ -413,7 +508,7 @@ https://hostname:port/oauth2/authorize?response_type=id_token+token
 					</section>
 					<section>
 						<h4>Enterprise Architecture</h4>
-						<img src="images/enterprise-architecture.png" width="60%" />
+						<img src="images/enterprise-architecture.png" width="50%" />
 					</section>
 				</section>
 			</div>
